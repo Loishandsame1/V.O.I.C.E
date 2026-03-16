@@ -1,0 +1,287 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(145deg, #5c0000, #8b0000);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Angpao */
+.angpao {
+    width: 190px;
+    height: 260px;
+    background: linear-gradient(to bottom, #b30000, #7a0000);
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+.popup h2 {
+    color: aliceblue;
+    font-size: 40px;
+}
+.popup button {
+    color: azure;
+    font-size: 25px;
+}
+
+/* Lingkaran emas matte */
+.angpao::before {
+    content: "福";
+    width: 85px;
+    height: 85px;
+    background: #d4af37;
+    border-radius: 50%;
+    color: #7a0000;
+    font-size: 34px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+/* Efek hover clean */
+.angpao:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+.angpao:active {
+    transform: scale(0.96);
+}
+
+/* Popup */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.popup img {
+    width: 80%;
+    max-width: 360px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    animation: fadeUp 0.3s ease;
+}
+
+.popup button {
+    margin-top: 25px;
+    padding: 10px 25px;
+    background: #d4af37;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.popup button:hover {
+    opacity: 0.85;
+}
+
+@keyframes fadeUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .angpao {
+        width: 160px;
+        height: 230px;
+    }
+
+    .angpao::before {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+    }
+}
+
+/* LANTERN */
+.lantern {
+    position: absolute;
+    top: 0;
+    width: 70px;
+    height: 100px;
+    background: linear-gradient(to bottom, #cc0000, #990000);
+    border-radius: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    animation: swing 3s ease-in-out infinite;
+}
+
+.lantern::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 4px;
+    height: 40px;
+    background: gold;
+    transform: translateX(-50%);
+}
+
+.lantern::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: gold;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.lantern.left {
+    left: 40px;
+}
+
+.lantern.right {
+    right: 40px;
+    animation-delay: 1.5s;
+}
+
+/* Animasi goyang */
+@keyframes swing {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(6deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Responsive biar gak nabrak */
+@media (max-width: 600px) {
+    .lantern {
+        width: 50px;
+        height: 80px;
+    }
+}
+
+/* BACKGROUND ORNAMEN */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-radial-gradient(
+        circle,
+        rgba(255,215,0,0.05),
+        rgba(255,215,0,0.05) 2px,
+        transparent 2px,
+        transparent 40px
+    );
+    pointer-events: none;
+}
+
+/* LANTERN */
+.lantern {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 90px;
+    background: linear-gradient(to bottom, #cc0000, #990000);
+    border-radius: 30px;
+    animation: swing 3s ease-in-out infinite;
+}
+
+.lantern::before {
+    content: "";
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    width: 3px;
+    height: 35px;
+    background: gold;
+    transform: translateX(-50%);
+}
+
+.lantern::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background: gold;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.lantern.left { left: 40px; }
+.lantern.right { right: 40px; animation-delay: 1.5s; }
+
+@keyframes swing {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(6deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* CONFETTI */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    from { transform: translateY(-10vh); }
+    to { transform: translateY(110vh); }
+}
+
+/* FIREWORKS */
+.fireworks::before,
+.fireworks::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: gold;
+    border-radius: 50%;
+    animation: explode 1.5s infinite;
+}
+
+.fireworks::before {
+    top: 20%;
+    left: 30%;
+}
+
+.fireworks::after {
+    top: 40%;
+    right: 25%;
+    animation-delay: 0.8s;
+}
+
+@keyframes explode {
+    0% { box-shadow: 0 0 0 gold; }
+    50% {
+        box-shadow:
+        0 -40px gold,
+        40px 0 gold,
+        -40px 0 gold,
+        0 40px gold,
+        30px 30px gold,
+        -30px -30px gold;
+    }
+    100% { box-shadow: 0 0 0 gold; }
+}
